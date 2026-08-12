@@ -1,0 +1,38 @@
+A logger is a tool used in an application to record important events, activities, warnings, and errors while the application is running.
+
+In an authentication system, a logger can record events such as:
+
+User registration
+Successful/failed login
+OTP verification
+Token refresh
+Logout
+Authentication errors
+
+
+here we use morgan as logger
+
+
+//to store token
+
+//local storage 
+Pros:
+Easy to implement
+Persists after browser refresh
+Frontend can easily access it
+
+Major problem:
+JavaScript can access localStorage.
+
+//cookies
+This means browser JavaScript cannot directly read the cookie.
+Cookies are automatically sent by the browser with requests to the matching domain.
+This is convenient, but it creates a CSRF risk because the browser automatically attaches cookies.
+
+
+Token	          Recommended storage	              Why
+Access Token	 Memory / sometimes cookie	        Short-lived, e.g. 15 min
+Refresh Token	 HttpOnly Cookie	                Long-lived and sensitive
+
+
+Refresh Token generate Access Token (stored in memory)
